@@ -2,6 +2,8 @@
 <head>
     <title>Пабы Москвы</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5lu1Cac2AG8H8w-lqzqu79WlxlfPCa08&callback=initMap"
+    async defer></script>
     <style>
     .btn {
         color: #fff;
@@ -30,20 +32,33 @@
         right: 10;
         bottom: 10;
     }
-    iframe{
+     html, body {
         height: 100%;
-        width: 100%;
-    }
-    #page {
+        margin: 0;
+        padding: 0;
+     }
+    #map {
         height: 100%;
     }
     </style>
 </head>
 <body>
-    <div id="page">
-        <iframe 
-                src="https://www.google.com/maps/d/embed?mid=1NNUtejoR6-6iWq2mHF2rMh-Q5ZE"
-        ></iframe>
+    <script>
+       var map;
+       var moscow = {lat: 55.751244, lng: 37.618423}
+       function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: moscow,
+                zoom: 11
+            });
+
+            var kml = new google.maps.KmlLayer({
+                map:map,
+                url: "http://www.google.com/maps/d/u/1/kml?mid=1NNUtejoR6-6iWq2mHF2rMh-Q5ZE"
+            });
+      }
+    </script>
+    <div id="map">
         <a
             target="_blank"
             href="https://www.google.com/maps/d/u/0/edit?mid=1NNUtejoR6-6iWq2mHF2rMh-Q5ZE&ll=55.74999939484715%2C37.68154983722843&z=10">
